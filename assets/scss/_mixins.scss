@@ -1,0 +1,77 @@
+/*
+===============================================================
+  ## UTILS
+===============================================================
+*/
+
+@mixin cover($image) {
+  background: url($image) no-repeat center center; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='$image', sizingMethod='scale');
+  -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='$image', sizingMethod='scale')";
+}
+
+@mixin valign(){
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%); 
+  -webkit-transform: translateY(-50%);  
+  -ms-transform: translateY(-50%);  
+  -o-transform: translateY(-50%);  
+}
+
+@mixin halign(){
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%); 
+  -webkit-transform: translateX(-50%);  
+  -ms-transform: translateX(-50%);  
+  -o-transform: translateX(-50%);  
+}
+
+@mixin calign(){
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%); 
+  -webkit-transform: translateX(-50%) translateY(-50%);  
+  -ms-transform: translateX(-50%) translateY(-50%);  
+  -o-transform: translateX(-50%) translateY(-50%);  
+}
+
+@mixin background-opacity($color, $opacity: 0.3) {
+    background: $color; /* The Fallback */
+    background: rgba($color, $opacity);
+}
+
+@mixin transition($transition-property, $transition-time, $method) {
+    -webkit-transition: $transition-property $transition-time $method;
+    -moz-transition: $transition-property $transition-time $method;
+    -ms-transition: $transition-property $transition-time $method;
+    -o-transition: $transition-property $transition-time $method;
+    transition: $transition-property $transition-time $method;
+}
+
+@mixin gradient($from, $to) {
+  /* fallback/image non-cover color */
+  background-color: $from;
+ 
+  /* Firefox 3.6+ */
+  background-image: -moz-linear-gradient($from, $to);
+ 
+  /* Safari 4+, Chrome 1+ */
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($from), to($to));
+ 
+  /* Safari 5.1+, Chrome 10+ */
+  background-image: -webkit-linear-gradient($from, $to);
+ 
+  /* Opera 11.10+ */
+  background-image: -o-linear-gradient($from, $to);
+}
+
+.valign {
+  @include valign;
+}
