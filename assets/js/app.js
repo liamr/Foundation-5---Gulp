@@ -48,9 +48,7 @@ require.config({
         'fastclick': 'vendor/fastclick',
         'modernizr': 'vendor/modernizr',
         'placeholder': 'vendor/placeholder'
-
-        //'scrollto': 'libs/scrollto'
-        //"waypoints": "libs/jquery.waypoints"
+        
     },
     'shim': {
         'imagesLoaded': ['jquery'],
@@ -159,7 +157,7 @@ require.config({
     priority : [
     'jquery'  //execute jquery before any other dependency
     ]
-})
+});
 
 //APP
 
@@ -184,7 +182,7 @@ APP = {
 
       log("APP.js Loaded");
 
-      jQuery.extend(jQuery.easing,
+      $.extend(jQuery.easing,
       {
         def: 'easeInOutQuint',
 
@@ -450,9 +448,8 @@ require(['jquery', 'svgeezy', 'enquire', 'modernizr', 'fastclick'], function($){
       
       $(document).ready(function(){        
 
-        //Foundation
+        //Foundation 
         $(document).foundation({});
-        $('#myModal').foundation('reveal', 'open'); 
         
         UTIL.init();
       });
