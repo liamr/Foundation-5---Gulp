@@ -37,7 +37,7 @@ $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
     // The variables above should give enough control.
 
     /* Clearing Styles */
-    .clearing-thumbs, #{data('clearing')} {
+    [data-clearing] {
       @include clearfix;
       margin-bottom: 0;
       margin-#{$default-float}: 0;
@@ -46,10 +46,6 @@ $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
       li {
         float: $default-float;
         margin-#{$opposite-direction}: 10px;
-      }
-
-      &[class*="block-grid-"] li {
-        margin-#{$opposite-direction}: 0;
       }
     }
 
@@ -71,14 +67,6 @@ $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
       height: 100%;
       overflow: hidden;
       margin: 0;
-    }
-
-    .clearing-touch-label {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      color: #aaa;
-      font-size: 0.6em;
     }
 
     .visible-img {
@@ -167,7 +155,7 @@ $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
           border-#{$default-float}-color: $clearing-arrow-color;
         }
       }
-    
+  	
       .clearing-main-prev.disabled,
       .clearing-main-next.disabled { opacity: 0.3; }
 

@@ -8,6 +8,7 @@ You'll need to have the following items installed before continuing.
 
   * [Node.js](http://nodejs.org): Use the installer provided on the NodeJS website.
   * [Gulp](http://gulpjs.com/): Run `[sudo] npm install -g gulp`
+  * Sass 3.3.0 is required to use the scss sourcemap feature: Run `[sudo] gem install --pre sass`
 
 ## Quickstart
 
