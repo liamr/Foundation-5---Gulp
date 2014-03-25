@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Foundation 5 + gulp</title>
+    <title>Clouston</title>
     <link href="assets/css/app.css" rel="stylesheet">
 
     <!--<meta property="og:title" content="" />
@@ -11,11 +11,9 @@
     <meta property="og:image" content="" />
     <meta property="og:description" content="" />-->
 
-    <script src="assets/js/vendor/custom.modernizr.js"></script>
+    <script data-main="assets/js/app" src="assets/js/vendor/require.min.js"></script>
 
-    <script data-main="assets/js/app.min" src="assets/js/vendor/require.min.js"></script>
-
-    <link href='http://fonts.googleapis.com/css?family=Karla:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+    
 
     <!--[if lt IE 9]>
       <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
@@ -32,7 +30,7 @@
       <nav data-topbar class="top-bar">
         <ul class="title-area">
           <li class="name">
-            <h1><a href="#">Foundation 5 + gulp </a></h1>
+            <h1><a href="#">Cl- </a></h1>
           </li>
           <li class="toggle-topbar menu-icon"><a href="#"></a></li>
         </ul>
@@ -54,50 +52,20 @@
     <!-- End Header and Nav -->
 
 
-    <!-- First Band (Image) -->
+    <!-- Page:  -->
 
-    <div class="row">
-      <div class="medium-12 large-12 columns">
-        <img src="http://placehold.it/1000x400&text=[img]">
+    <section class="page">
 
-        <hr>
-      </div>
-    </div>
-    <!-- Second Band (Image Left with Text) -->
+      <div class="row">
+        <div class="medium-12 large-12 columns">
+          <img src="http://placehold.it/1000x400&text=[img]">
 
-    <div class="row">
-      <div class="medium-4 large-4 columns">
-        <img src="http://placehold.it/400x300&text=[img]">
-      </div>
-      <div class="medium-8 large-8 columns">
-        <h4>This is a content section.</h4>
-        <div class="row">
-          <div class="large-6 columns">
-            <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</p>
-          </div>
-          <div class="large-6 columns">
-            <p>Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami.</p>
-          </div>
+          <hr>
         </div>
       </div>
-    </div>
 
-
-    <!-- Third Band (Image Right with Text) -->
-
-    <div class="row">
-      <div class="medium-6 large-8 columns">
-        <h4>This is a content section.</h4>
-
-        <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</p>
-
-        <p>Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami.</p>
-
-      </div>
-      <div class="medium-6 large-4 columns">
-        <img src="http://placehold.it/400x300&text=[img]">
-      </div>
-    </div>
+    </section>
+    
 
 
     <!-- Footer -->
@@ -120,6 +88,12 @@
         </div>
       </div>
     </footer>
+
+    <div id="myModal" class="reveal-modal" data-reveal>
+      <h2>Foundation loaded via RequireJS</h2>
+      <p>This modal window automatically opens once the JS dependencies are loaded.</p>
+      <a class="close-reveal-modal">&#215;</a>
+    </div>
 
   </body>
 </html>

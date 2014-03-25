@@ -14,19 +14,147 @@
 
 require.config({
     paths : {
+        /*jQuery*/
         'jquery': 'vendor/jquery',
-        "imagesLoaded": "libs/jquery.imagesloaded",
-        "nprogress": "libs/nprogress.min",
-        "enquire": "libs/enquire.min",
-        "svgeezy": "libs/svgeezy.min",
-        "foundation": "vendor/foundation.min",
-        "fastclick": "vendor/fastclick",
+
+        /*Libs*/
+        'imagesloaded': 'libs/jquery.imagesloaded.min',
+        'breakpoints': 'libs/breakpoints',
+        'nprogress': 'libs/nprogress.min',
+        'enquire': 'libs/enquire.min',
+        'svgeezy': 'libs/svgeezy.min',
+
+        /* Foundation */
+        'foundation': 'vendor/foundation.min',
+        'foundation.core': 'vendor/foundation/foundation',
+        'foundation.abide': 'vendor/foundation/foundation.abide',
+        'foundation.accordion': 'vendor/foundation/foundation.accordion',
+        'foundation.alert': 'vendor/foundation/foundation.alert',
+        'foundation.clearing': 'vendor/foundation/foundation.clearing',
+        'foundation.dropdown': 'vendor/foundation/foundation.dropdown',
+        'foundation.equalizer': 'vendor/foundation/foundation.equalizer',
+        'foundation.interchange': 'vendor/foundation/foundation.interchange',
+        'foundation.joyride': 'vendor/foundation/foundation.joyride',
+        'foundation.magellan': 'vendor/foundation/foundation.magellan',
+        'foundation.offcanvas': 'vendor/foundation/foundation.offcanvas',
+        'foundation.orbit': 'vendor/foundation/foundation.orbit',
+        'foundation.reveal': 'vendor/foundation/foundation.reveal',
+        'foundation.tab': 'vendor/foundation/foundation.tab',
+        'foundation.tooltip': 'vendor/foundation/foundation.tooltip',
+        'foundation.topbar': 'vendor/foundation/foundation.topbar',
+
+        /* Vendor Scripts */
+        'jquery.cookie': 'vendor/jquery.cookie',
+        'fastclick': 'vendor/fastclick',
+        'modernizr': 'vendor/modernizr',
+        'placeholder': 'vendor/placeholder'
 
         //'scrollto': 'libs/scrollto'
         //"waypoints": "libs/jquery.waypoints"
     },
-    "shim": {
-      "imagesLoaded": ["jquery"]
+    'shim': {
+        'imagesLoaded': ['jquery'],
+
+        /* Foundation */
+        'foundation.core': {
+            deps: [
+            'jquery',
+            'modernizr'
+            ],
+            exports: 'Foundation'
+        },
+        'foundation.abide': {
+            deps: [
+            'foundation.core'
+            ]
+        },
+        'foundation.accordion': {
+            deps: [
+            'foundation.core'
+            ]
+        },
+        'foundation.alert': {
+            deps: [
+            'foundation.core'
+            ]
+        },
+        'foundation.clearing': {
+            deps: [
+            'foundation.core'
+            ]
+        },
+        'foundation.dropdown': {
+            deps: [
+            'foundation.core'
+            ]
+        },
+        'foundation.equalizer': {
+            deps: [
+            'foundation.core'
+            ]
+        },
+        'foundation.interchange': {
+            deps: [
+            'foundation.core'
+            ]
+        },
+        'foundation.joyride': {
+            deps: [
+            'foundation.core',
+            'foundation.cookie'
+            ]
+        },
+        'foundation.magellan': {
+            deps: [
+            'foundation.core'
+            ]
+        },
+        'foundation.offcanvas': {
+            deps: [
+            'foundation.core'
+            ]
+        },
+        'foundation.orbit': {
+            deps: [
+            'foundation.core'
+            ]
+        },
+        'foundation.reveal': {
+            deps: [
+            'foundation.core'
+            ]
+        },
+        'foundation.tab': {
+            deps: [
+            'foundation.core'
+            ]
+        },
+        'foundation.tooltip': {
+            deps: [
+            'foundation.core'
+            ]
+        },
+        'foundation.topbar': {
+            deps: [
+            'foundation.core'
+            ]
+        },
+
+        /* Vendor Scripts */
+        'jquery.cookie': {
+            deps: [
+            'jquery'
+            ]
+        },
+        'fastclick': {
+            exports: 'FastClick'
+        },
+        'modernizr': {
+            exports: 'Modernizr'
+        },
+        'placeholder': {
+            exports: 'Placeholders'
+        }
     },
     priority : [
     'jquery'  //execute jquery before any other dependency
@@ -151,14 +279,14 @@ APP = {
       APP.LoadBehavior();
 
       //Run AJAXIFY once
-      if(APP.initial_run){
+      /*if(APP.initial_run){
         require(['ajaxify'], function(module){
 
           //module.init();
 
         });
 
-      }
+      }*/
 
       //RESIZE
 
@@ -267,7 +395,7 @@ UTIL = {
 
 //INIT
 
-require(['jquery', 'svgeezy', 'enquire', 'fastclick'], function($){
+require(['jquery', 'svgeezy', 'enquire', 'modernizr', 'fastclick'], function($){
 
     svgeezy.init(false, 'png');
 
@@ -318,9 +446,14 @@ require(['jquery', 'svgeezy', 'enquire', 'fastclick'], function($){
 
     })(jQuery,'smartresize');
 
-    require(['foundation', 'libs/jquery.imagesloaded.min', 'libs/breakpoints'], function(Foundation, imagesLoaded, breakpoints){
-      $(document).ready(function(){
-        $(document).foundation();
+    require(['jquery', 'imagesloaded', 'breakpoints', 'foundation.reveal'], function($, imagesLoaded, breakpoints, r) {
+      
+      $(document).ready(function(){        
+
+        //Foundation
+        $(document).foundation({});
+        $('#myModal').foundation('reveal', 'open'); 
+        
         UTIL.init();
       });
     });

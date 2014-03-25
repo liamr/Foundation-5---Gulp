@@ -18,11 +18,11 @@ var gulp = require('gulp'),
 
 gulp.task('styles', function() {
   return gulp.src('assets/scss/app.scss')
-    .pipe(sass({ style: 'compressed', sourcemap: true }))//Note: sourcemap requires sass 3
+    .pipe(sass({ style: 'uncompressed'}))//Note: sourcemap requires sass 3
     .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
     .pipe(gulp.dest('assets/css'))
-    .pipe(rename({suffix: '.min'}))
-    .pipe(minifycss())
+    //.pipe(rename({suffix: '.min'}))
+    //.pipe(minifycss())
     .pipe(gulp.dest('assets/css'))
     .pipe(livereload(server))
     .pipe(notify({ message: 'Styles task complete' }));
