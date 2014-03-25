@@ -334,8 +334,6 @@ require(['jquery', 'svgeezy', 'enquire', 'fastclick'], function($){
 APP.ua = navigator.userAgent;
 APP.click_event = (is_touch_device()) ? "touchstart" : "click";
 
-
-
 // usage: log('inside coolFunc',this,arguments);
 // http://paulirish.com/2009/log-a-lightweight-wrapper-for-consolelog/
 window.log = function(){

@@ -30,13 +30,13 @@ gulp.task('styles', function() {
 
 // Scripts
 gulp.task('scripts', function() {
-  return gulp.src('assets/js/**/*.js')
+  return gulp.src('assets/js/app.js')
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'))
     //.pipe(concat('app.js'))
     //.pipe(gulp.dest('assets/js'))
     .pipe(rename({ suffix: '.min' }))
-    .pipe(uglify())
+    .pipe(uglify({outSourceMap: true}))
     .pipe(livereload(server))
     .pipe(gulp.dest('assets/js'))
     .pipe(notify({ message: 'Scripts task complete' }));

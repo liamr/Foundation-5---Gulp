@@ -70,7 +70,7 @@ define(['jquery', 'libs/jquery.history.min'], function($) {
             var $this = $(this);
 
             // Ajaxify
-            $this.find('a:internal:not(.no-ajaxy):not(.projects-btn a)').click(function(event){
+            $this.find('a:internal:not(.no-ajaxy)').click(function(event){
                 // Prepare
                 var
                     $this = $(this),
@@ -104,18 +104,12 @@ define(['jquery', 'libs/jquery.history.min'], function($) {
                 relativeUrl = url.replace(rootUrl,''),
                 urlArray = relativeUrl.split('/');
 
-            switch(urlArray[0]){
+            /*switch(urlArray[0]){
                 case "interact" :
 
                 urlArray.splice(0, 1);
 
-                if(urlArray[0] == "like"){
-                    transition_out();
-                } else {
-                    CENTRAL.goto(urlArray);
-                }
-
-                
+                CENTRAL.goto(urlArray);
 
                 break;
 
@@ -123,9 +117,9 @@ define(['jquery', 'libs/jquery.history.min'], function($) {
 
                 transition_out();
 
-            }
+            }*/
 
-            
+            transition_out();
 
         });
 
