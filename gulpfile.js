@@ -51,6 +51,14 @@ gulp.task('scripts', function() {
 //    .pipe(notify({ message: 'Images task complete' }));
 //});
 
+//HTML - Just watch and reload
+gulp.task('html', function() {
+    return gulp.src('**/*.html')
+        .pipe(gulp.dest(''))
+        .pipe(livereload(server))
+        .pipe(notify({ message: 'HTML task complete' }));
+});
+
 // Clean
 gulp.task('clean', function() {
   //return gulp.src(['dist/styles', 'dist/scripts', 'dist/images'], {read: false})
@@ -76,6 +84,9 @@ gulp.task('watch', function() {
 
     // Watch .js files
     gulp.watch('assets/js/**/*.js', ['scripts']);
+
+    //Watch HTML
+    gulp.watch('**/*.html', ['html']);
 
     // Watch image files
     //gulp.watch('src/images/**/*', ['images']);
