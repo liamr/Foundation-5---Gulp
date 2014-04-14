@@ -10,7 +10,7 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     clean = require('gulp-clean'),
     concat = require('gulp-concat'),
-    notify = require('gulp-notify'),
+    //notify = require('gulp-notify'),
     cache = require('gulp-cache'),
     livereload = require('gulp-livereload'),
     lr = require('tiny-lr'),
@@ -18,14 +18,14 @@ var gulp = require('gulp'),
 
 gulp.task('styles', function() {
   return gulp.src('assets/scss/app.scss')
-    .pipe(sass({ style: 'uncompressed'}))//Note: sourcemap requires sass 3
+    .pipe(sass({ style: 'compressed'}))//Note: sourcemap requires sass 3
     .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
     .pipe(gulp.dest('assets/css'))
     //.pipe(rename({suffix: '.min'}))
     //.pipe(minifycss())
     .pipe(gulp.dest('assets/css'))
-    .pipe(livereload(server))
-    .pipe(notify({ message: 'Styles task complete' }));
+    .pipe(livereload(server));
+    //.pipe(notify({ message: 'Styles task complete' }));
 });
 
 // Scripts
@@ -38,8 +38,8 @@ gulp.task('scripts', function() {
     .pipe(rename({ suffix: '.min' }))
     .pipe(uglify({outSourceMap: true}))
     .pipe(livereload(server))
-    .pipe(gulp.dest('assets/js'))
-    .pipe(notify({ message: 'Scripts task complete' }));
+    .pipe(gulp.dest('assets/js'));
+    //.pipe(notify({ message: 'Scripts task complete' }));
 });
 
 // Images
@@ -55,8 +55,8 @@ gulp.task('scripts', function() {
 gulp.task('html', function() {
     return gulp.src('**/*.html')
         .pipe(gulp.dest(''))
-        .pipe(livereload(server))
-        .pipe(notify({ message: 'HTML task complete' }));
+        .pipe(livereload(server));
+        //.pipe(notify({ message: 'HTML task complete' }));
 });
 
 // Clean

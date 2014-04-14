@@ -20,6 +20,8 @@ require.config({
         /*Libs*/
         'imagesloaded': 'libs/jquery.imagesloaded.min',
         'breakpoints': 'libs/breakpoints',
+        'waypoints': 'libs/jquery.waypoints.min',
+        'royalslider': 'libs/jquery.royalslider.min',
         'nprogress': 'libs/nprogress.min',
         'enquire': 'libs/enquire.min',
         'svgeezy': 'libs/svgeezy.min',
@@ -271,7 +273,17 @@ APP = {
       enquire.register(xlarge, function() { log(" * BP: XLarge * "); });
       enquire.register(xxlarge, function() { log(" * BP: XXLarge * "); });
 
-
+      //Foundation
+      /*require([
+          'jquery',
+          'modernizr',
+          'fastclick',
+          'foundation'
+      ], function ($, Modernizr, FastClick) {
+          log('Test');
+          $(document).foundation();
+          $('#myModal').foundation('reveal', 'open');
+      });*/
 
       //BEHAVIOURS
       APP.LoadBehavior();
@@ -397,63 +409,32 @@ require(['jquery', 'svgeezy', 'enquire', 'modernizr', 'fastclick'], function($){
 
     svgeezy.init(false, 'png');
 
-    (function($) {
+    jquery_extensions();
 
-      $.fn.visible = function(partial) {
-        
-          var $t            = $(this),
-              $w            = $(window),
-              viewTop       = $w.scrollTop(),
-              viewBottom    = viewTop + $w.height(),
-              _top          = $t.offset().top,
-              _bottom       = _top + $t.height(),
-              compareTop    = partial === true ? _bottom : _top,
-              compareBottom = partial === true ? _top : _bottom;
-        
-        return ((compareBottom <= (viewBottom)) && (compareTop >= viewTop));
+    Modernizr.load([
+        //first test need for polyfill
+        {
+            test: window.matchMedia,
+            nope: ["assets/js/libs/matchMedia.js", "assets/js/libs/matchMedia.addListener.js"],
+            complete : function () {
 
-      };
-        
-    })(jQuery);
+              require(['jquery', 'imagesloaded', 'waypoints', 'royalslider', 'enquire', 'foundation.reveal', 'foundation.dropdown' ], function($, imagesLoaded) {
+          
+                $(document).ready(function(){        
 
-    (function($,sr){
+                  //Foundation 
+                  //$(document).foundation({});
 
-      // debouncing function from John Hann
-      // http://unscriptable.com/index.php/2009/03/20/debouncing-javascript-methods/
-      var debounce = function (func, threshold, execAsap) {
-          var timeout;
+                  //$('#myModal').foundation('reveal', 'open');
+                  
+                  UTIL.init();
+                });
+              });
 
-          return function debounced () {
-              var obj = this, args = arguments;
-              function delayed () {
-                  if (!execAsap)
-                      func.apply(obj, args);
-                  timeout = null;
-              };
+            }
+        }
 
-              if (timeout)
-                  clearTimeout(timeout);
-              else if (execAsap)
-                  func.apply(obj, args);
-
-              timeout = setTimeout(delayed, threshold || 100);
-          };
-      }
-      // smartresize 
-      jQuery.fn[sr] = function(fn){  return fn ? this.bind('resize', debounce(fn)) : this.trigger(sr); };
-
-    })(jQuery,'smartresize');
-
-    require(['jquery', 'imagesloaded', 'breakpoints', 'foundation.reveal'], function($, imagesLoaded, breakpoints, r) {
-      
-      $(document).ready(function(){        
-
-        //Foundation 
-        $(document).foundation({});
-        
-        UTIL.init();
-      });
-    });
+    ]);
 
 });
 
@@ -494,4 +475,53 @@ function is_touch_device() {
     return !!('ontouchstart' in window) // works on most browsers 
         || !!('onmsgesturechange' in window); // works on ie10
   };
+
+function jquery_extensions(){
+  (function($) {
+
+    $.fn.visible = function(partial) {
+      
+        var $t            = $(this),
+            $w            = $(window),
+            viewTop       = $w.scrollTop(),
+            viewBottom    = viewTop + $w.height(),
+            _top          = $t.offset().top,
+            _bottom       = _top + $t.height(),
+            compareTop    = partial === true ? _bottom : _top,
+            compareBottom = partial === true ? _top : _bottom;
+      
+      return ((compareBottom <= (viewBottom)) && (compareTop >= viewTop));
+
+    };
+      
+    })(jQuery);
+
+    (function($,sr){
+
+      // debouncing function from John Hann
+      // http://unscriptable.com/index.php/2009/03/20/debouncing-javascript-methods/
+      var debounce = function (func, threshold, execAsap) {
+          var timeout;
+
+          return function debounced () {
+              var obj = this, args = arguments;
+              function delayed () {
+                  if (!execAsap)
+                      func.apply(obj, args);
+                  timeout = null;
+              };
+
+              if (timeout)
+                  clearTimeout(timeout);
+              else if (execAsap)
+                  func.apply(obj, args);
+
+              timeout = setTimeout(delayed, threshold || 100);
+          };
+      }
+      // smartresize 
+      jQuery.fn[sr] = function(fn){  return fn ? this.bind('resize', debounce(fn)) : this.trigger(sr); };
+
+    })(jQuery,'smartresize');
+}
 
