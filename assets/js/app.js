@@ -25,6 +25,7 @@ require.config({
         'nprogress': 'libs/nprogress.min',
         'enquire': 'libs/enquire.min',
         'svgeezy': 'libs/svgeezy.min',
+        'magnific': 'libs/jquery.magnific.min',
 
         /* Foundation */
         'foundation': 'vendor/foundation.min',
